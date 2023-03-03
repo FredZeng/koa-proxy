@@ -41,6 +41,15 @@ module.exports = function(options) {
       }
     }
 
+    var ignoreMethods = typeof options.ignoreMethods === 'string' ? [options.ignoreMethods] : options.ignoreMethods;
+    if (ignoreMethods && Array.isArray(ignoreMethods)) {
+      ignoreMethods = ignoreMethods.map((it) => it.toLowerCase());
+
+      if (ignoreMethods.indexOf(ctx.method.toLowerCase()) > -1) {
+        return next();
+      }
+    }
+
     var parsedBody = getParsedBody(ctx);
 
     var opt = {

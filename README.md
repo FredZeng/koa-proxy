@@ -97,6 +97,14 @@ app.use(proxy({
 }));
 ```
 
+You can use `ignoreMethods` to exclude some specific http method.
+
+```js
+app.use(proxy({
+  ignoreMethods: 'get' // or ['get', 'post', 'options'] case-insensitive
+}));
+```
+
 ## LICENSE
 
 Copyright (c) 2014 popomore. Licensed under the MIT license.
